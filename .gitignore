@@ -1,0 +1,41 @@
+# Test configuration files (contain sensitive credentials)
+config.master-env.json
+config.demo-dev-nicolas.json
+config.demo-dev-nicolasnxt.json
+
+# Output directory (generated JSON files)
+output/
+!output/README.md
+
+# Generated JSON output files
+apis_output*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Environment files
+.env
+.env.local
+

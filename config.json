@@ -1,0 +1,11 @@
+{
+  "server_url": "http://localhost:8083/management",
+  "username": "admin",
+  "password": "admin",
+  "org_id": "DEFAULT",
+  "env_id": "DEFAULT"
+}
+
+
+
+

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  gravitee-apim-stats:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: gravitee-apim-stats:latest
+    container_name: gravitee-apim-stats
+    environment:
+      # Gravitee Management API configuration
+      # These can be set via .env file or environment variables
+      - GRAVITEE_SERVER_URL=${GRAVITEE_SERVER_URL:-http://localhost:8083/management}
+      - GRAVITEE_USERNAME=${GRAVITEE_USERNAME:-admin}
+      - GRAVITEE_PASSWORD=${GRAVITEE_PASSWORD:-admin}
+      - GRAVITEE_ORG_ID=${GRAVITEE_ORG_ID:-DEFAULT}
+      - GRAVITEE_ENV_ID=${GRAVITEE_ENV_ID:-DEFAULT}
+    # Keep container running for docker exec
+    command: tail -f /dev/null
+    # Optional: Add volumes if you want to mount config files or output directory
+    volumes:
+      # Mount output directory to persist JSON files (created automatically)
+      - ../output:/app/output
+      # Uncomment to mount config files:
+      # - ../config.json:/app/config.json:ro
+      # - ../config.master-env.json:/app/config.master-env.json:ro
+      # - ../config.demo-dev-nicolas.json:/app/config.demo-dev-nicolas.json:ro
+    restart: unless-stopped
+
